@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CurrencyCompass</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+</head>
+<body class="light-mode">
+    <header>
+        <h1>CurrencyCompass</h1>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </header>
+    <form method="GET" action="/get_exchange_rate" class="container">
+        <label for="baseCurrency">Base Currency:</label>
+        <select id="baseCurrency" name="baseCurrency">
+            <option value="USD" {{ "selected" if baseCurrency=="USD" else "" }}>USD</option>
+            <option value="EUR" {{ "selected" if baseCurrency=="EUR" else "" }}>EUR</option>
+            <option value="GBP" {{ "selected" if baseCurrency=="GBP" else "" }}>GBP</option>
+            <option value="JPY" {{ "selected" if baseCurrency=="JPY" else "" }}>JPY</option>
+            <option value="CHF" {{ "selected" if baseCurrency=="CHF" else "" }}>CHF</option>
+            <option value="CNY" {{ "selected" if baseCurrency=="CNY" else "" }}>CNY</option>
+            <!-- Include similar lines for other currencies -->
+        </select>
+        <label for="targetCurrency">Target Currency:</label>
+        <select id="targetCurrency" name="targetCurrency">
+            <option value="USD" {{ "selected" if targetCurrency=="USD" else "" }}>USD</option>
+            <option value="EUR" {{ "selected" if targetCurrency=="EUR" else "" }}>EUR</option>
+            <option value="GBP" {{ "selected" if targetCurrency=="GBP" else "" }}>GBP</option>
+            <option value="JPY" {{ "selected" if targetCurrency=="JPY" else "" }}>JPY</option>
+            <option value="CHF" {{ "selected" if targetCurrency=="CHF" else "" }}>CHF</option>
+            <option value="CNY" {{ "selected" if targetCurrency=="CNY" else "" }}>CNY</option>
+            <!-- Include similar lines for other currencies -->
+        </select>
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="Amounttext" value="{{ amount }}">
+        <button type="submit">Convert</button>
+
+        <p id="convertedAmount">{{ result }}</p>
+    </form>
+</body>
+</html>
